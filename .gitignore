@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Runtime artifacts
+tmp/uploads/*
+tmp/previews/*
+tmp/outputs/*
+!tmp/.gitkeep
+!tmp/*/.gitkeep
+
+# Logs
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test / build tooling
+coverage/
+.nyc_output/
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

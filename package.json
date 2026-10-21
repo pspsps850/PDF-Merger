@@ -1,0 +1,26 @@
+{
+  "name": "pdf-merger",
+  "version": "1.0.0",
+  "description": "PDF merger with upload, arrange, preview, merge, download",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "jest --runInBand"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "helmet": "^7.2.0",
+    "multer": "^2.0.2",
+    "pdf-lib": "^1.17.1",
+    "pdf-to-img": "^7.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.1.3"
+  }
+}

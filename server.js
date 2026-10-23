@@ -1,4 +1,4 @@
-const {PORT} = require('./src/config/env.config');
+const {PORT} = require('./src/configs/env.config');
 const express = require('express');
 const app = require('./src/app');
 const logger = require('./src/utils/logger.utils');

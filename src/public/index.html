@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Shop — PDF page assembly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brand">
+    <h1 class="wordmark">Page&nbsp;Shop</h1>
+    <p class="sub">Assemble pages from several PDFs into one document</p>
+  </div>
+  <div class="health" id="health" data-state="unknown">
+    <span class="health-dot" aria-hidden="true"></span>
+    <span class="health-label">checking</span>
+  </div>
+</header>
+
+<main class="workbench">
+
+  <section class="trays" aria-label="Source files">
+    <div class="panel-head">
+      <h2>Trays</h2>
+      <span class="head-actions">
+        <button type="button" id="clearTrays" class="link-btn" hidden>Clear all</button>
+        <span class="panel-note" id="trayCount">empty</span>
+      </span>
+    </div>
+
+    <div class="dropzone" id="dropzone" role="button" tabindex="0"
+         aria-label="Drop PDF files here, or press Enter to browse">
+      <p class="dz-title">Drop PDFs here</p>
+      <p class="dz-sub">or <a href="#" id="browseLink">browse files</a> · up to 20 · <span id="maxMb">25&nbsp;MB</span> each</p>
+      <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple hidden>
+    </div>
+
+    <div id="uploadStatus" class="banner" hidden></div>
+
+    <div class="file-list" id="fileList"></div>
+
+    <template id="fileCardTpl">
+      <article class="file-card">
+        <header class="file-head">
+          <div class="file-id">
+            <h3 class="file-name"></h3>
+            <p class="file-meta mono"></p>
+          </div>
+          <span class="flat-badge" hidden>flattened</span>
+          <button type="button" class="link-btn file-remove" aria-label="Remove file">× Remove</button>
+        </header>
+        <div class="page-grid" role="list"></div>
+        <button type="button" class="link-btn add-all">Add all pages →</button>
+      </article>
+    </template>
+
+    <template id="pageCellTpl">
+      <button type="button" class="page-cell" role="listitem">
+        <img alt="" loading="lazy" draggable="false">
+        <span class="page-no mono"></span>
+        <span class="page-add" aria-hidden="true">+</span>
+      </button>
+    </template>
+  </section>
+
+  <aside class="spec" aria-label="Output specification">
+    <div class="panel-head">
+      <h2>Specification</h2>
+    </div>
+
+    <form id="mergeForm">
+      <div class="field">
+        <label for="outputName">Output name</label>
+        <input type="text" id="outputName" value="merged.pdf" autocomplete="off" spellcheck="false">
+      </div>
+
+      <dl class="spec-stats">
+        <div><dt>Pages set</dt><dd id="statPages" class="mono">0</dd></div>
+        <div><dt>Source files</dt><dd id="statFiles" class="mono">0</dd></div>
+      </dl>
+
+      <button type="submit" id="mergeBtn" class="merge-btn" disabled>
+        <span>Merge</span><span class="arrow" aria-hidden="true">→</span>
+      </button>
+    </form>
+
+    <div id="jobStatus" class="banner" hidden></div>
+  </aside>
+
+</main>
+
+<!-- signature element: the pasteboard strip -->
+<section class="sequence wrapper" aria-label="Page sequence">
+  <header class="seq-head">
+    <h2 class="seq-label">Sequence</h2>
+    <span class="seq-help">drag to reorder · changes order of pages in output</span>
+    <button type="button" id="clearSeq" class="link-btn" hidden>Clear</button>
+  </header>
+  <ol class="strip" id="strip"></ol>
+  <p class="strip-empty" id="stripEmpty">Nothing on the pasteboard — pick pages from a tray above.</p>
+</section>
+
+<template id="seqItemTpl">
+  <li class="seq-item" draggable="true">
+    <span class="folio mono"></span>
+    <span class="crop tl" aria-hidden="true"></span>
+    <span class="crop br" aria-hidden="true"></span>
+    <img class="seq-thumb" alt="" loading="lazy" draggable="false">
+    <p class="seq-src mono"></p>
+    <div class="seq-actions">
+      <button type="button" class="seq-btn move-left"  aria-label="Move earlier">‹</button>
+      <button type="button" class="seq-btn move-right" aria-label="Move later">›</button>
+      <button type="button" class="seq-btn remove"     aria-label="Remove from sequence">×</button>
+    </div>
+  </li>
+</template>
+
+<script src="/app.js"></script>
+</body>
+</html>

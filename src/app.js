@@ -3,12 +3,11 @@ const helmet = require('helmet');
 const path = require('path');
 
 const routes = require('./routes/index.routes');
-const {errorHandler} = require('./middleware/errorHandler.middleware');
+const {errorHandler, notFound} = require('./middleware/errorHandler.middleware');
 const {ensureTmpDirs, startTempSweeper } = require('./utils/file.utils');
 const jobService = require('./services/job.service');
 const {TMP_TTL_HOURS} = require('./configs/env.config');
 const logger = require('./utils/logger.utils');
-const { NOTFOUND } = require('dns');
 
 try{
     ensureTmpDirs();

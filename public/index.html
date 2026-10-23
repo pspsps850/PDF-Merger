@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDF Merger</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <h1>PDF Merger</h1>
+
+      <section class="panel">
+        <input id="file-input" type="file" accept="application/pdf" multiple />
+        <button id="upload-btn" type="button">Upload PDFs</button>
+      </section>
+
+      <section class="panel">
+        <p id="status" role="status">Upload one or more PDFs to begin.</p>
+
+        <ul id="pages" class="page-grid" aria-label="PDF pages"></ul>
+      </section>
+
+      <section class="panel actions">
+        <button id="merge-btn" type="button" disabled>Merge PDF</button>
+        <a id="download-link" hidden href="#">Download merged PDF</a>
+      </section>
+    </main>
+
+    <script src="/js/api.js" defer></script>
+    <script src="/js/ui.js" defer></script>
+    <script src="/js/arranger.js" defer></script>
+    <script src="/js/main.js" defer></script>
+  </body>
+</html>

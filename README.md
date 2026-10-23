@@ -12,7 +12,7 @@ Local PDF merge tool.
 
 ## Requirements
 
-- Node.js 18+
+- Node.js 22.13+
 - npm
 
 ## Setup

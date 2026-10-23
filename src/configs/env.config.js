@@ -4,13 +4,13 @@ const path = require('path');
 function loadDotenv(){
     const envPath = path.join(__dirname, '..', '..', '.env');
 
-    if(!fs.exitSync(envPath)){
+    if(!fs.existsSync(envPath)){
         return;
     }
 
    const contents = fs.readFileSync(envPath, 'utf-8');
 
-   for (const line of contents.split('/\r?\n/')) {
+   for (const line of contents.split(/\r?\n/)) {
     const trimmed = line.trim();
 
     if(!trimmed || trimmed.startsWith('#')) {

@@ -7,11 +7,8 @@ node_modules/
 !.env.example
 
 # Runtime artifacts
-tmp/uploads/*
-tmp/previews/*
-tmp/outputs/*
-!tmp/.gitkeep
-!tmp/*/.gitkeep
+src/temp/
+tmp/
 
 # Logs
 logs/
